@@ -21,4 +21,4 @@ function getPokebyId(id){
 
 
 
-getPokebyId(2);
+getPokebyId(1);
