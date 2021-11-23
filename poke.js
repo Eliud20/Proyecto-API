@@ -1,3 +1,4 @@
+
 const request = require("request");
 const vec = [];
 
@@ -23,4 +24,3 @@ function getPokebyId(id) {
     return pok;
 }
 
-getPokebyId(1);
