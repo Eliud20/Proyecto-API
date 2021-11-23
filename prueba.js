@@ -29,11 +29,16 @@ function crearPoke(pokemon) {
 }
 
 function inserta(poke) {
-    var a = document.querySelector('#uno');
+    var a = document.getElementById('1');
     a.innerHTML = poke.name;
+    var c = document.getElementById('2');
+    c.innerHTML = poke.name;
     const img = document.createElement('img');
     img.src = poke.sprites.front_default;
-    a.appendChild(img);
+    const img2 = document.createElement('img');
+    img2.src = poke.sprites.front_default;
+    a.appendChild(img2);
+    c.appendChild(img);
 }
 
-traerPoke("pikachu");
+traerPoke("1");
