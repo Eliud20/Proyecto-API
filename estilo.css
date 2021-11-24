@@ -5,10 +5,16 @@
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
+    border: 5px solid black;
     margin: 50px;
     padding: 20px;
     font-size: 30px;
     text-align: center;
+}
+
+.ima{
+    border: 3px solid black;
+    border-radius: 20px;
 }
 
 #uno{
