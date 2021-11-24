@@ -1,20 +1,24 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
+    border: 5px solid blue;
+    border-radius: 15px;
 }
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    border: 5px solid black;
-    margin: 50px;
+    border: 3px solid black;
+    margin: 9%;
     padding: 20px;
     font-size: 30px;
     text-align: center;
 }
 
 .ima{
-    border: 3px solid black;
-    border-radius: 20px;
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 3px;
+    background-color: antiquewhite;
 }
 
 #uno{
