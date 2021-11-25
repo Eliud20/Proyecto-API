@@ -1,31 +1,39 @@
 var prueb = [];
 var grid = document.getElementById("tot");
 var contenedor = document.getElementsByClassName('grid-item');
-var id = 0;
+var id = 1;
 var modal = document.getElementById("mod");
+var dentro = document.getElementById("info");
 var btn = document.getElementById("boton");
 var span = document.getElementsByClassName("close")[0];
 var input = document.querySelector("input");
-var a = "";
+var ima = document.getElementById("imag");
 
+
+function muestraModal(poke) {
+    ima.src = poke.sprites.front_default;
+    dentro.innerHTML = `${capitalizar(poke.name)}
+                 <br> Tipo(s): ${capitalizar(getTypes(poke))}
+                 <br> Peso: ${poke.weight} lbs
+                 <br> Altura: ${poke.height} ft
+                 <br> Movimientos: ${capitalizar(getAbilities(poke))}`;
+}
 
 btn.onclick = function () {
     modal.style.display = "block";
-    let div = document.createElement("div");
-    div.innerHTML = buscarPoke(input.value);
-    console.log(buscarPoke(input.value));
-    modal.appendChild(div);
+    buscarPoke((input.value).toLowerCase());
 }
 
-// When the user clicks on <span> (x), close the modal
+
 span.onclick = function () {
     modal.style.display = "none";
+    input.value = "";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        input.value = "";
     }
 }
 
@@ -33,8 +41,7 @@ function buscarPoke(poke) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
         .then(res => res.json())
         .then(data => {
-            a = data.name;
-            return a;
+            muestraModal(data);
         })
         .catch(error => console.log(error))
 }
@@ -51,14 +58,22 @@ function pedirPok() {
     }
 }
 
-function capitalizeOnlyFirst(string) {
+function capitalizar(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function getTypes(poke) {
     let cad = "";
     for (let i = 0; i < poke.types.length; i++) {
-        cad += poke.types[i].type.name + ", ";
+        cad += capitalizar(poke.types[i].type.name) + ", ";
+    }
+    return cad.slice(0, -2);
+}
+
+function getAbilities(poke) {
+    let cad = "";
+    for (let i = 0; i < 10; i++) {
+        cad += "<li>" + capitalizar(poke.moves[i].move.name) + "</li>";
     }
     return cad.slice(0, -2);
 }
@@ -68,12 +83,16 @@ function imprimirPoke(poke) {
     div.className = "grid-item";
 
     let div2 = document.createElement("div");
-    div2.innerHTML = `Tipo(s): <br>${capitalizeOnlyFirst(getTypes(poke))}`;
+    div2.innerHTML = `Tipo(s): <br>${capitalizar(getTypes(poke))}`;
 
     let but = document.createElement('button');
     but.className = "bot";
     but.id = `${id}`;
     id++;
+    but.onclick = function () {
+        buscarPoke(but.id);
+        modal.style.display = "block";
+    }
 
     let img = document.createElement('img');
     img.src = poke.sprites.front_default;
@@ -82,7 +101,7 @@ function imprimirPoke(poke) {
     const nom = poke.name;
 
     let salto = document.createElement('br');
-    div.innerHTML = `#${poke.id} <br>${capitalizeOnlyFirst(nom)}<br>`;
+    div.innerHTML = `#${poke.id} <br>${capitalizar(nom)}<br>`;
 
     grid.appendChild(but);
     but.appendChild(div);
