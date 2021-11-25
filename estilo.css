@@ -1,17 +1,23 @@
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
-    border: 5px solid blue;
+    grid-template-columns: auto auto auto auto auto ;
+    /*border: 5px solid blue;*/
     border-radius: 15px;
 }
 
 .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 3px solid black;
-    margin: 9%;
-    padding: 20px;
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*border: 3px solid black;*/
+    margin: 0;
+    padding: 15px;
     font-size: 30px;
     text-align: center;
+    font-family: comic sans ms;
+}
+
+body {
+    background: rgb(224,64,36);
+    background: linear-gradient(90deg, rgba(224,64,36,1) 0%, rgba(221,50,27,0.44861694677871145) 100%);
 }
 
 .ima{
@@ -23,4 +29,86 @@
 
 #uno{
     border: 1px solid black;
+}
+
+.bot {
+    margin: 5px;
+    background: transparent;
+    border: 2px solid black;
+}
+
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    size: 20px;
+    padding: auto;
+    margin: 5px auto;
+}
+
+input {
+    border-radius: 25px;
+    border: 2px solid rgb(35, 94, 149);
+    width: 80%;
+    height: 35px;
+    margin-right: 5px;
+    align-self: center;
+    font-size: large;
+    padding: 12px 20px;
+}
+
+header {
+    margin: 15px;
+}
+
+#boton {
+    background-color: #4CAF50; /* Green */
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2), 0 4px 14px 0 rgba(0,0,0,0.19);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#boton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.contenido {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
