@@ -15,6 +15,7 @@ function capitalizar(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//Funcion que obtiene los pokemones de la api
 function pedirPok() {
     for (let i = 1; i <= 155; i++) {
         fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
@@ -26,6 +27,7 @@ function pedirPok() {
     }
 }
 
+//Funcion para buscar pokemon por nombre
 function buscarPoke(poke) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
         .then(res => res.json())
@@ -35,6 +37,7 @@ function buscarPoke(poke) {
         .catch(error => console.log(error))
 }
 
+
 function getTypes(poke) {
     let cad = "";
     for (let i = 0; i < poke.types.length; i++) {
@@ -43,13 +46,16 @@ function getTypes(poke) {
     return cad.slice(0, -2);
 }
 
-function getAbilities(poke) {
+
+
+function getMoves(poke) {
     let cad = "";
     for (let i = 0; i < 10; i++) {
         cad += "<li>" + capitalizar(poke.moves[i].move.name) + "</li>";
     }
     return cad;
 }
+
 
 function getStats(poke) {
     let stat = "";
@@ -60,6 +66,8 @@ function getStats(poke) {
 }
 
 
+//Funcion que inserta la informacion creando divs dentro del grid container, se llama
+//cada vez que se pide un pokemon
 function imprimirPoke(poke) {
     let div = document.createElement("div")
     div.className = "grid-item";
@@ -71,6 +79,9 @@ function imprimirPoke(poke) {
     but.className = "bot";
     id = poke.name;
     but.id = `${id}`;
+
+    //Funcion que muestra en el modal la informacion adicional del pokemon usando el id del div
+    //que es el nombre del pokemon
     but.onclick = function () {
         buscarPoke(but.id);
         modal.style.display = "block";
@@ -102,7 +113,7 @@ function muestraModal(poke) {
                  <br> Altura: ${poke.height} ft
                  <ul>
                   Estadisticas: ${getStats(poke)} <br>
-                  Movimientos: ${capitalizar(getAbilities(poke))}
+                  Movimientos: ${capitalizar(getMoves(poke))}
                  </ul>`;
     cont.style.background = sacaBack(poke);
 }
@@ -125,6 +136,7 @@ window.onclick = function (event) {
     }
 }
 
+//Funcion para poner background de acuerdo al primer tipo de la lista
 function sacaBack(poke) {
 
     switch (poke.types[0].type.name) {
@@ -171,4 +183,3 @@ function sacaBack(poke) {
 
 
 pedirPok();
-console.log(prueb);
