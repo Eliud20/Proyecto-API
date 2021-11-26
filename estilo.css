@@ -92,10 +92,8 @@ header {
 }
 
 .contenido {
-    background-color: black;
     margin: 1% auto; 
     padding: 10px;
-    border: 1px solid #888;
     width: 20%; /* Could be more or less, depending on screen size */
     font-size: 30px;
     color: white;
@@ -121,12 +119,10 @@ header {
 }
 
 #info {
-    border: 2px solid black;
     width: fit-content;
 }
 
 .bot:hover{
-    margin: 10px;
-    margin-top: 0;
     cursor: pointer;
+    border-radius: 25px;
 }
