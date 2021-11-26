@@ -50,7 +50,7 @@ function getTypes(poke) {
 
 function getMoves(poke) {
     let cad = "";
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
         cad += "<li>" + capitalizar(poke.moves[i].move.name) + "</li>";
     }
     return cad;
